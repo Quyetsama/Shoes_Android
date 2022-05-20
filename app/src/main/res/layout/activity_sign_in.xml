@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInActivity"
+    android:background="@color/secondary">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:background="#00000000"
+        android:minWidth="0dp"
+        app:icon="@drawable/ic_back"
+        app:iconPadding="0dp"
+        app:iconSize="40dp" />
+
+    <RelativeLayout
+        android:id="@+id/titleContainer"
+        android:layout_below="@+id/backBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp" >
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let's sign you in"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:textColor="#E4E8EE"
+            android:layout_marginHorizontal="40dp"/>
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_below="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome back."
+            android:textSize="32dp"
+            android:textColor="#E4E8EE"
+            android:layout_marginHorizontal="40dp"
+            android:paddingVertical="16dp" />
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_below="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You've been missed!"
+            android:textSize="32dp"
+            android:textColor="#E4E8EE"
+            android:layout_marginHorizontal="40dp"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/edtContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleContainer"
+        android:layout_marginHorizontal="40dp">
+
+        <EditText
+            android:id="@+id/emailEdt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/custom_edt"
+            android:hint="Email"
+            android:inputType="text|textCapSentences"
+            android:textColor="#E4E8EE"
+            android:textColorHint="#969696" />
+
+        <EditText
+            android:id="@+id/passwordEdt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/emailEdt"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/custom_edt"
+            android:capitalize="none"
+            android:drawableRight="@drawable/ic_baseline_wifi_tethering_24"
+            android:hint="Password"
+            android:inputType="text|textPassword"
+            android:textColor="#E4E8EE"
+            android:textColorHint="#969696" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/questionContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account? "
+                android:textColor="#969696" />
+
+            <TextView
+                android:id="@+id/registerBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/question"
+                android:text="Register"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signInBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/questionContainer"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/custom_button"
+            android:text="Sign In"
+            android:textColor="#000" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/loadingSignIn"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>

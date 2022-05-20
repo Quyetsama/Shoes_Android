@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductActivity"
+    android:background="#F5FCFF">
+
+    <include
+        android:id="@+id/header_product"
+        layout="@layout/toolbar_product" />
+
+    <ScrollView
+        android:id="@+id/scrollView_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button_container"
+        android:layout_below="@+id/header_product">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imgContainer"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_margin="20dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="20dp">
+
+                <ImageView
+                    android:id="@+id/img_Product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/name_price_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgContainer"
+                android:layout_marginHorizontal="20dp">
+
+                <TextView
+                    android:id="@+id/name_Product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/price_Product"
+                    android:text="Nike Air Jordan"
+                    android:textColor="@color/primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/price_Product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="299 $"
+                    android:textSize="32sp"
+                    android:textColor="#454545"
+                    android:textAlignment="textEnd" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_price_container" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lvSize"/>
+
+            <TextView
+                android:id="@+id/des_Product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lvColor"
+                android:layout_marginHorizontal="20dp"
+                android:text="How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addToCartBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/custom_button_2"
+            android:text="ADD TO CART"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
