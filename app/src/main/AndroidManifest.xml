@@ -13,6 +13,21 @@
         android:theme="@style/Theme.Android_TKPM"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FavoritesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailsOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".OrderSuccessActivity"
             android:exported="false" />
         <activity
@@ -26,19 +41,23 @@
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- go to top android:launchMode="singleTask" -->
         <activity
             android:name=".MainActivity"
+            android:excludeFromRecents="true"
             android:exported="true"
-            android:taskAffinity=""
-            android:excludeFromRecents="true">
+            android:launchMode="singleTask"
+            android:taskAffinity="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".Notifications.PushNotificationService" android:exported="false">
+
+        <service
+            android:name=".Notifications.PushNotificationService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

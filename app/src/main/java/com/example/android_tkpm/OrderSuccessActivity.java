@@ -6,13 +6,14 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
 public class OrderSuccessActivity extends AppCompatActivity {
 
-    private MaterialButton backButton;
+    private ImageButton backButton;
     private TextView titleToolBar;
     private AppCompatButton completeButton;
 
@@ -39,7 +40,7 @@ public class OrderSuccessActivity extends AppCompatActivity {
     }
 
     private void mapping() {
-        backButton = (MaterialButton) findViewById(R.id.backBtn);
+        backButton = (ImageButton) findViewById(R.id.backBtn);
         titleToolBar = (TextView) findViewById(R.id.title_toolbar);
         completeButton = (AppCompatButton) findViewById(R.id.completeBtn);
 

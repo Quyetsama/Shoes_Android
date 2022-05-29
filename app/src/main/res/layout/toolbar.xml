@@ -6,50 +6,55 @@
     android:paddingVertical="12dp">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Brands"
-            android:textSize="36dp"
-            android:textStyle="bold"
-            android:textColor="@color/primary"
-            android:layout_marginLeft="24dp"
-            android:layout_centerVertical="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="24dp"
+        android:text="Brands"
+        android:textColor="@color/primary"
+        android:textSize="36dp"
+        android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="24dp">
 
-            <com.google.android.material.button.MaterialButton
+            <ImageButton
                 android:id="@+id/searchBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
                 android:background="#00000000"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                app:icon="@drawable/ic_search"
-                app:iconPadding="0dp"
-                app:iconSize="28dp"
-                app:iconTint="@color/secondary" />
+                android:src="@drawable/ic_search_28" />
 
-            <com.google.android.material.button.MaterialButton
+
+            <ImageButton
                 android:id="@+id/cartBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/searchBtn"
+                android:layout_toEndOf="@+id/searchBtn"
                 android:background="#00000000"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                app:icon="@drawable/ic_cart"
-                app:iconPadding="0dp"
-                app:iconSize="28dp"
-                app:iconTint="@color/secondary" />
+                android:src="@drawable/ic_cart_28" />
 
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/badge_cart"
+            android:layout_alignParentRight="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:background="@drawable/badge_cart"
+            android:text="0"
+            android:textColor="@color/white"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"/>
 
 
 

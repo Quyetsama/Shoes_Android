@@ -24,15 +24,14 @@
         android:layout_below="@+id/backBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp" >
+        android:layout_marginVertical="50dp" >
 
         <TextView
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Let's sign you in"
-            android:textSize="40dp"
+            android:textSize="40sp"
             android:textStyle="bold"
             android:textColor="#E4E8EE"
             android:layout_marginHorizontal="40dp"/>
@@ -43,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Welcome back."
-            android:textSize="32dp"
+            android:textSize="32sp"
             android:textColor="#E4E8EE"
             android:layout_marginHorizontal="40dp"
             android:paddingVertical="16dp" />
@@ -54,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="You've been missed!"
-            android:textSize="32dp"
+            android:textSize="32sp"
             android:textColor="#E4E8EE"
             android:layout_marginHorizontal="40dp"/>
 
@@ -74,7 +73,7 @@
             android:layout_height="60dp"
             android:background="@drawable/custom_edt"
             android:hint="Email"
-            android:inputType="text|textCapSentences"
+            android:inputType="textEmailAddress"
             android:textColor="#E4E8EE"
             android:textColorHint="#969696" />
 
@@ -90,14 +89,17 @@
             android:hint="Password"
             android:inputType="text|textPassword"
             android:textColor="#E4E8EE"
-            android:textColorHint="#969696" />
+            android:textColorHint="#969696"
+            android:imeOptions="actionDone"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_below="@+id/edtContainer"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom">
 
         <RelativeLayout
             android:id="@+id/questionContainer"

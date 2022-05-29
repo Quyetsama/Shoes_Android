@@ -20,4 +20,8 @@ public class ApiUtils {
     public static OrderService getOrderService() {
         return RetrofitClient.getClient(BASE_URL).create(OrderService.class);
     }
+
+    public static NotifyService getNotifyService() {
+        return RetrofitClient.getClient(BASE_URL).create(NotifyService.class);
+    }
 }

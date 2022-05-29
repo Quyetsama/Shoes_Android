@@ -76,6 +76,7 @@ public class SignInActivity extends AppCompatActivity {
                 Headers headers = response.headers();
                 if (response.isSuccessful()) {
                     if(new TokenManager(SignInActivity.this).saveToken(headers.get("Authorization"))) {
+                        setResult(RESULT_OK);
                         finish();
                     }
 

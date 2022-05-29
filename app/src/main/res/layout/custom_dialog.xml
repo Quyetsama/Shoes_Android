@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="Delete"
-                android:textColor="#FF5E5E"
+                android:textColor="@color/heart"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

@@ -1,17 +1,22 @@
 package com.example.android_tkpm;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +32,7 @@ import com.example.android_tkpm.models.ItemCart;
 import com.example.android_tkpm.models.Product;
 import com.example.android_tkpm.models.Size;
 import com.example.android_tkpm.utils.CartManager;
+import com.example.android_tkpm.utils.TokenManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +46,13 @@ public class ProductActivity extends AppCompatActivity implements ColorAdapter.I
     private ProductService productService = ApiUtils.getProductService();
     private Product product;
 
-    private Button backButton, cartButton, addButton;
+    private String productID = "";
+    private Boolean isHeart = false;
+
+    private ImageButton backButton, cartButton, heartButton;
+    private Button addButton;
     private ImageView imageProduct;
-    private TextView nameProduct, priceProduct, desProduct;
+    private TextView nameProduct, priceProduct, desProduct, badgeCart;
 
     private RecyclerView recyclerViewSize;
     private List<String> sizeList = new ArrayList<>();
@@ -63,9 +73,9 @@ public class ProductActivity extends AppCompatActivity implements ColorAdapter.I
         createRecyclerView();
 
         Intent intent = getIntent();
-        String _id = intent.getStringExtra("_id");
+        productID = intent.getStringExtra("_id");
 
-        getProduct(_id);
+        getProduct();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,20 +106,38 @@ public class ProductActivity extends AppCompatActivity implements ColorAdapter.I
                             product.getPrice(),
                             1
                     ));
+                    badgeCart.setText((CartManager.getCart().size() + ""));
                     Toast.makeText(ProductActivity.this, "ADD TO CART", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        heartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isHeart = !isHeart;
+                favoriteProduct();
             }
         });
     }
 
     private void mapping() {
-        backButton = (Button) findViewById(R.id.backBtn);
-        cartButton = (Button) findViewById(R.id.cartBtn);
+        backButton = (ImageButton) findViewById(R.id.backBtn);
+        cartButton = (ImageButton) findViewById(R.id.cartBtn);
         addButton = (Button) findViewById(R.id.addToCartBtn);
+        heartButton = (ImageButton) findViewById(R.id.heart_button);
         imageProduct = (ImageView) findViewById(R.id.img_Product);
         nameProduct = (TextView) findViewById(R.id.name_Product);
         priceProduct = (TextView) findViewById(R.id.price_Product);
         desProduct = (TextView) findViewById(R.id.des_Product);
+        badgeCart = (TextView) findViewById(R.id.badge_cart);
+
+        if(isHeart) {
+            heartButton.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.heart));
+        }
+        else {
+            heartButton.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        }
 
         recyclerViewSize = (RecyclerView) findViewById(R.id.lvSize);
         recyclerViewColor = (RecyclerView) findViewById(R.id.lvColor);
@@ -133,6 +161,7 @@ public class ProductActivity extends AppCompatActivity implements ColorAdapter.I
 
     private void changeSizeData(List<String> sizes) {
 
+        sizeList.clear();
         sizeList.addAll(sizes);
 
         sizeAdapter.setClickListener(this);
@@ -141,14 +170,15 @@ public class ProductActivity extends AppCompatActivity implements ColorAdapter.I
 
     private void changeColorData(List<String> colors) {
 
+        colorList.clear();
         colorList.addAll(colors);
 
         colorAdapter.setClickListener(this);
         colorAdapter.notifyDataSetChanged();
     }
 
-    private void getProduct(String _id) {
-        productService.getProductById(_id).enqueue(new Callback<Product>() {
+    private void getProduct() {
+        productService.getProductById(new TokenManager(getApplicationContext()).getToken(), productID).enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
 
@@ -161,6 +191,16 @@ public class ProductActivity extends AppCompatActivity implements ColorAdapter.I
                     nameProduct.setText(product.getName());
                     priceProduct.setText(product.getPrice() + " $");
                     desProduct.setText(product.getDescription());
+
+                    isHeart = product.getFavorite();
+
+                    if(isHeart) {
+                        heartButton.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.heart));
+                    }
+                    else {
+                        heartButton.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                    }
+
                     changeSizeData(product.getSize());
                     changeColorData(product.getColor());
                 }
@@ -187,5 +227,48 @@ public class ProductActivity extends AppCompatActivity implements ColorAdapter.I
     @Override
     public void onItemClickColor(View view, int position) {
         colorAdapter.setSelectedIndex(position);
+    }
+
+    private void favoriteProduct() {
+        TokenManager tokenManager = new TokenManager(getApplicationContext());
+
+        if(!tokenManager.getToken().equals("")) {
+            productService.favoriteProduct(tokenManager.getToken(), productID, isHeart).enqueue(new Callback<com.example.android_tkpm.models.Response>() {
+                @Override
+                public void onResponse(Call<com.example.android_tkpm.models.Response> call, Response<com.example.android_tkpm.models.Response> response) {
+                    if(response.isSuccessful()) {
+                        if(isHeart) {
+                            heartButton.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.heart));
+                        }
+                        else {
+                            heartButton.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                        }
+                    }
+                    else if(response.code() == 401) {
+                        tokenManager.removeToken();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<com.example.android_tkpm.models.Response> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else {
+            startActivityForResult(new Intent(getApplicationContext(), SignInActivity.class), 1);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        badgeCart.setText((CartManager.getCart().size() + ""));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getProduct();
     }
 }

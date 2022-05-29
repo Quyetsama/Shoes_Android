@@ -4,13 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/avatar_container.xml" value="0.3828125" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/drawable/background_button_1.xml" value="0.3828125" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/drawable/badge_cart.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/bottom_button.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/button.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/color_border.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/custom_button.xml" value="0.22135416666666666" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/custom_button_2.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/custom_edt.xml" value="0.3828125" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/drawable/custom_edt_search.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/custom_image.xml" value="0.3828125" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/drawable/custom_item_product_2.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/delete_button.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/ic_back.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/ic_home.xml" value="0.3828125" />
@@ -18,34 +22,53 @@
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/quantity_button.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/round_corners.xml" value="0.3769230769230769" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/round_corners_cart.xml" value="0.3828125" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/drawable/round_corners_cart_2.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/round_corners_dialog.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/size_border.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/drawable/toolbar.xml" value="0.3828125" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_cart.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_check_out.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_details_order.xml" value="0.34148550724637683" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_favorites.xml" value="0.3020833333333333" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_order_history.xml" value="0.35144927536231885" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_order_success.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_product.xml" value="0.31146245059288535" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_search.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_sign_in.xml" value="0.2957427536231884" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/activity_sign_up.xml" value="0.2957427536231884" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/avatar_container.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/bottom_button.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/button_1.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/custom_dialog.xml" value="0.4282238442822384" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/custom_notifications.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/footer_view.xml" value="0.28940217391304346" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/fragment_delivered.xml" value="0.35144927536231885" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/fragment_delivering.xml" value="0.35144927536231885" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/fragment_notify.xml" value="0.2957427536231884" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/fragment_unconfirmed.xml" value="0.35144927536231885" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/fragment_user.xml" value="0.2957427536231884" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_cart.xml" value="0.33" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_cart_2.xml" value="0.34148550724637683" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_category.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_color.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_notify.xml" value="0.35643115942028986" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_order.xml" value="0.35144927536231885" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_product.xml" value="0.33" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_product_2.xml" value="0.36594202898550726" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/item_size.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/loading_modal.xml" value="0.36141304347826086" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/tool_bar_2.xml" value="0.35643115942028986" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/toolbar_1.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/toolbar_2.xml" value="0.35643115942028986" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/toolbar_cart.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/layout/toolbar_product.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/layout/toolbar_search.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/menu/bottom_tab.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_TKPM/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_TKPM/app/src/main/res/menu/tab_view.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

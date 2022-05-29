@@ -14,18 +14,23 @@
         android:id="@+id/lvCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar" />
+        android:layout_below="@id/toolbar"/>
 
-    <ListView
-        android:id="@+id/lvContainer"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/lvCategory"
-        android:clipToPadding="false"
-        android:divider="#00000000"
-        android:paddingBottom="60dp"
-        android:scrollbarStyle="outsideOverlay" />
+        android:layout_below="@id/lvCategory">
 
+        <ListView
+            android:id="@+id/lvContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="#00000000"
+            android:paddingBottom="60dp"
+            android:scrollbarStyle="outsideOverlay" />
 
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

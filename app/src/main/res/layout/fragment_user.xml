@@ -19,171 +19,179 @@
         android:textAlignment="center"
         android:paddingVertical="20dp"/>
 
-    <RelativeLayout
-        android:id="@+id/container_profile"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_profile"
         android:layout_below="@+id/PROFILE"
-        android:visibility="gone">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/avatar_container"
+            android:id="@+id/container_profile"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/avatar_container"
-            android:elevation="10dp">
+            android:layout_height="match_parent"
+            android:visibility="visible">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+                android:id="@+id/avatar_container"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/avatar_container"
+                android:elevation="10dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/imgContainer"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerHorizontal="true"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="100dp">
-
-                    <ImageView
-                        android:id="@+id/imgavatar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/logo" />
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/name_profile"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/imgContainer"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
-                    android:text="Admin"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:layout_centerInParent="true">
 
-                <TextView
-                    android:id="@+id/email_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/name_profile"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
-                    android:text="vanquyetc2vc@gmail.com"
-                    android:textColor="#969696" />
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/avatarContainer"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="10dp"
+                        app:cardCornerRadius="100dp">
+
+                        <ImageView
+                            android:id="@+id/avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/logo" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/name_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/avatarContainer"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:text="Admin"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/email_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/name_profile"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="vanquyetc2vc@gmail.com"
+                        android:textColor="#969696" />
+
+                </RelativeLayout>
 
             </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/avatar_container">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/history_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp">
+
+                        <ImageButton
+                            android:id="@+id/history_button"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/quantity_button"
+                            android:src="@drawable/ic_history_32" />
+
+                        <TextView
+                            android:id="@+id/order_history_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_toEndOf="@+id/history_button"
+                            android:text="Order History"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/favorite_container"
+                        android:layout_below="@+id/history_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp">
+
+                        <ImageButton
+                            android:id="@+id/favorite_button"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/quantity_button"
+                            android:src="@drawable/ic_favorite_32" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_toEndOf="@+id/favorite_button"
+                            android:text="Favorites"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/logout_container"
+                        android:layout_below="@+id/favorite_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginTop="20dp">
+
+                        <ImageButton
+                            android:id="@+id/logout_button"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/quantity_button"
+                            android:src="@drawable/ic_logout_32" />
+
+                        <TextView
+                            android:id="@+id/logout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_toEndOf="@+id/logout_button"
+                            android:text="Logout"
+                            android:textColor="#FF5E5E"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </ScrollView>
 
         </RelativeLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/avatar_container">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/history_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="40dp"
-                    android:layout_marginTop="20dp">
-
-                    <ImageButton
-                        android:id="@+id/history_button"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/quantity_button"
-                        android:src="@drawable/ic_history_32" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_toEndOf="@+id/history_button"
-                        android:text="Order History"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/favorius_container"
-                    android:layout_below="@+id/history_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="40dp"
-                    android:layout_marginTop="20dp">
-
-                    <ImageButton
-                        android:id="@+id/favorius_button"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/quantity_button"
-                        android:src="@drawable/ic_favorite_32" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_toEndOf="@+id/favorius_button"
-                        android:text="Favorius"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/logout_container"
-                    android:layout_below="@+id/favorius_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="40dp"
-                    android:layout_marginTop="20dp">
-
-                    <ImageButton
-                        android:id="@+id/logout_button"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/quantity_button"
-                        android:src="@drawable/ic_logout_32" />
-
-                    <TextView
-                        android:id="@+id/logout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_toEndOf="@+id/logout_button"
-                        android:text="Logout"
-                        android:textColor="#FF5E5E"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-        </ScrollView>
-
-    </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <RelativeLayout
         android:id="@+id/auth_container"

@@ -1,20 +1,23 @@
 package com.example.android_tkpm.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Response {
-    private String success, message;
+    private Boolean success;
+    private String message;
 
     public Response() {}
 
-    public Response(String success, String message) {
+    public Response(Boolean success, String message) {
         this.success = success;
         this.message = message;
     }
 
-    public String getSuccess() {
+    public Boolean getSuccess() {
         return success;
     }
 
-    public void setSuccess(String success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 

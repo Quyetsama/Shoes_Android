@@ -2,6 +2,7 @@ package com.example.android_tkpm.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_tkpm.R;
 import com.example.android_tkpm.models.Category;
+import com.example.android_tkpm.models.Notify;
 
 import java.util.List;
 
@@ -67,11 +69,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
         if(selectedIndex!= -1 && position == selectedIndex)
         {
-            holder.indicator.setBackgroundColor(Color.BLACK);
+//            holder.indicator.setBackgroundColor(Color.BLACK);
+            holder.name.setTextSize(24);
+            holder.indicator.setVisibility(View.VISIBLE);
         }
         else
         {
-            holder.indicator.setBackgroundColor(Color.WHITE);
+//            holder.indicator.setBackgroundColor(Color.WHITE);
+            holder.name.setTextSize(18);
+            holder.indicator.setVisibility(View.GONE);
         }
 
         holder.name.setText(category.getName());
@@ -82,8 +88,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         return categoryList.size();
     }
 
-    public String getItem(int position) {
-        return categoryList.get(position).getName();
+    public Category getItem(int position) {
+        return categoryList.get(position);
     }
 
     public void setClickListener(ItemClickListener itemClickListener) {
@@ -93,5 +99,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+    }
+
+    public void updateCategoryList(List<Category> newlist) {
+        categoryList.clear();
+        categoryList.addAll(newlist);
+        this.notifyDataSetChanged();
     }
 }

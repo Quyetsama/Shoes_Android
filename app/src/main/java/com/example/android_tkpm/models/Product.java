@@ -9,9 +9,16 @@ public class Product {
     private Category category;
     private int price;
     private List<String> size, color;
+    private Boolean favorite;
     private int quantity = 0;
 
     public Product() { }
+
+    public Product(String _id, String name, String image) {
+        this._id = _id;
+        this.name = name;
+        this.image = image;
+    }
 
     public Product(String _id, String name, Category category, int price, String image) {
         this._id = _id;
@@ -120,5 +127,13 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 }

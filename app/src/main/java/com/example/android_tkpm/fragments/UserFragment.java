@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,13 +19,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android_tkpm.FavoritesActivity;
 import com.example.android_tkpm.MainActivity;
+import com.example.android_tkpm.Notifications.PushNotificationService;
+import com.example.android_tkpm.OrderHistoryActivity;
 import com.example.android_tkpm.R;
 import com.example.android_tkpm.SignInActivity;
+import com.example.android_tkpm.SignUpActivity;
 import com.example.android_tkpm.api.ApiUtils;
 import com.example.android_tkpm.api.AuthService;
 import com.example.android_tkpm.models.User;
 import com.example.android_tkpm.utils.TokenManager;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,8 +42,9 @@ public class UserFragment extends Fragment {
 
     private AuthService authService = ApiUtils.getUserService();
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressBar loadingProfile;
-    private RelativeLayout containerProfile, containerAuth;
+    private RelativeLayout containerProfile, containerAuth, history_container, favorite_container;
     private TextView nameUser, emailUser, logout;
     private AppCompatButton signinButton, signupButton;
 
@@ -55,19 +64,47 @@ public class UserFragment extends Fragment {
 
         checkToken();
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                checkToken();
+            }
+        });
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new TokenManager(getActivity()).removeToken();
-                containerProfile.setVisibility(View.GONE);
-                containerAuth.setVisibility(View.VISIBLE);
+                logOut();
             }
         });
 
         signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SignInActivity.class));
+                startActivityForResult(new Intent(getActivity(), SignInActivity.class), 1);
+//                startActivity(new Intent(getActivity(), SignInActivity.class));
+            }
+        });
+
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SignUpActivity.class));
+            }
+        });
+
+        history_container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), OrderHistoryActivity.class));
+            }
+        });
+
+        favorite_container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), FavoritesActivity.class));
             }
         });
 
@@ -75,6 +112,7 @@ public class UserFragment extends Fragment {
     }
 
     private void mapping(View view) {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout_profile);
         containerProfile = (RelativeLayout) view.findViewById(R.id.container_profile);
         containerAuth = (RelativeLayout) view.findViewById(R.id.auth_container);
         loadingProfile = (ProgressBar) view.findViewById(R.id.loading_profile);
@@ -83,7 +121,8 @@ public class UserFragment extends Fragment {
         logout = (TextView) view.findViewById(R.id.logout);
         signinButton = (AppCompatButton) view.findViewById(R.id.signin_button);
         signupButton = (AppCompatButton) view.findViewById(R.id.signup_button);
-
+        history_container = (RelativeLayout) view.findViewById(R.id.history_container);
+        favorite_container = (RelativeLayout) view.findViewById(R.id.favorite_container);
     }
 
     private void getProfile() {
@@ -98,7 +137,6 @@ public class UserFragment extends Fragment {
 
                     User user = response.body();
                     if(user != null) {
-                        Toast.makeText(getActivity(), user.getFullName(), Toast.LENGTH_SHORT).show();
                         nameUser.setText(user.getFullName());
                         emailUser.setText(user.getEmail());
                         containerProfile.setVisibility(View.VISIBLE);
@@ -132,11 +170,46 @@ public class UserFragment extends Fragment {
         }
     }
 
+    private void logOut() {
+        loadingProfile.setVisibility(View.VISIBLE);
+        TokenManager tokenManager = new TokenManager(getActivity());;
+        String tokenDevice = PushNotificationService.getToken(getActivity());
+        JsonObject requestBody = new JsonObject();
+        requestBody.addProperty("tokenDevice", tokenDevice);
+
+        authService.logOut(tokenManager.getToken(), requestBody).enqueue(new Callback<com.example.android_tkpm.models.Response>() {
+            @Override
+            public void onResponse(Call<com.example.android_tkpm.models.Response> call, Response<com.example.android_tkpm.models.Response> response) {
+                loadingProfile.setVisibility(View.GONE);
+                if(response.isSuccessful()) {
+                    tokenManager.removeToken();
+                    containerProfile.setVisibility(View.GONE);
+                    containerAuth.setVisibility(View.VISIBLE);
+                }
+                else if(response.code() == 401) {
+                    tokenManager.removeToken();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<com.example.android_tkpm.models.Response> call, Throwable t) {
+                loadingProfile.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if(MainActivity.active.getClass().getSimpleName().equals("UserFragment")) {
+//            checkToken();
+//        }
+//    }
+
     @Override
-    public void onResume() {
-        super.onResume();
-        if(MainActivity.active.getClass().getSimpleName().equals("UserFragment")) {
-            checkToken();
-        }
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        checkToken();
     }
 }

@@ -1,7 +1,11 @@
 package com.example.android_tkpm.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ItemCart {
-    private String _id, name, size, color, image;
+//    @SerializedName("product")
+    private String _id;
+    private String name, size, color, image;
     private int price, quantity;
 
     public ItemCart() {}

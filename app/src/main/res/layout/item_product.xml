@@ -18,6 +18,17 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
+        <ImageView
+            android:id="@+id/heart_button_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:src="@drawable/ic_heart_32"
+            android:layout_gravity="right"
+            app:tint="@color/heart"
+            android:layout_margin="10dp"
+            android:visibility="gone"/>
+
     </androidx.cardview.widget.CardView>
 
 

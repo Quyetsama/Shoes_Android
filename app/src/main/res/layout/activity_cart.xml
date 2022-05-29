@@ -66,12 +66,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/checkoutBtn"
-            android:layout_toEndOf="@+id/total_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="20dp"
+            android:layout_toEndOf="@+id/total_container"
             android:background="@drawable/custom_button_2"
             android:text="CHECK OUT"
             android:textColor="@color/white" />

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +38,7 @@ public class CheckOutActivity extends AppCompatActivity {
     private OrderService orderService = ApiUtils.getOrderService();
 
     private TextView titleToolBar;
-    private MaterialButton backButton;
+    private ImageButton backButton;
 
     private EditText fullnameEdt, phoneEdt, addressEdt;
     private TextView subTotal, shipping, total;
@@ -72,7 +73,7 @@ public class CheckOutActivity extends AppCompatActivity {
     }
 
     private void mapping() {
-        backButton = (MaterialButton) findViewById(R.id.backBtn);
+        backButton = (ImageButton) findViewById(R.id.backBtn);
         titleToolBar = (TextView) findViewById(R.id.title_toolbar);
         fullnameEdt = (EditText) findViewById(R.id.fullname_edt);
         phoneEdt = (EditText) findViewById(R.id.phone_edt);
