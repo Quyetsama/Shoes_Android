@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment implements CategoryAdapter.ItemClickL
     private Boolean isLoading = false;
 
     private ImageButton searchButton, cartButton;
-    private TextView badgeCart;
+    public static TextView badgeCart;
 
     public HomeFragment() { }
 
@@ -289,9 +289,12 @@ public class HomeFragment extends Fragment implements CategoryAdapter.ItemClickL
     public void onResume() {
         super.onResume();
 
-        if(MainActivity.active.getClass().getSimpleName().equals("HomeFragment")) {
-            badgeCart.setText((CartManager.getCart().size() + ""));
-        }
+//        if(MainActivity.active.getClass().getSimpleName().equals("HomeFragment")) {
+//            badgeCart.setText((CartManager.getCart().size() + ""));
+//            if(NotifyFragment.badgeCart != null) {
+//                NotifyFragment.badgeCart.setText((CartManager.getCart().size() + ""));
+//            }
+//        }
     }
 
     public class mHandler extends Handler {

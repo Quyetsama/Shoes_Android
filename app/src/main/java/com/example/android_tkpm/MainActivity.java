@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.android_tkpm.fragments.HomeFragment;
 import com.example.android_tkpm.fragments.NotifyFragment;
 import com.example.android_tkpm.fragments.UserFragment;
+import com.example.android_tkpm.utils.CartManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(HomeFragment.badgeCart != null) {
+            HomeFragment.badgeCart.setText((CartManager.getCart().size() + ""));
+        }
+        if(NotifyFragment.badgeCart != null) {
+            NotifyFragment.badgeCart.setText((CartManager.getCart().size() + ""));
+        }
         Log.e("RESUME", active.getClass().getSimpleName());
     }
 

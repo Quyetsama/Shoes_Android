@@ -2,6 +2,7 @@ package com.example.android_tkpm.models;
 
 public class User {
     private String _id, fullName, email;
+    private static User user = new User();
 
     public User() {}
 
@@ -33,5 +34,17 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        User.user = user;
+    }
+
+    public static void clearUser() {
+        User.user = null;
     }
 }

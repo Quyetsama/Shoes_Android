@@ -82,13 +82,17 @@
                 android:id="@+id/lvSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/name_price_container" />
+                android:layout_below="@id/name_price_container"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lvColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/lvSize" />
+                android:layout_below="@id/lvSize"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:id="@+id/des_Product"
@@ -96,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/lvColor"
                 android:layout_marginHorizontal="20dp"
-                android:textColor="#969696"
-                android:text="How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??" />
+                android:text="How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??. How to change relative layout border color?? this is my code below i just want to show border color black but is show all relative layout black. i just want to show relative layout white color only borde will be black what will i do??"
+                android:textColor="#969696" />
 
         </RelativeLayout>
 

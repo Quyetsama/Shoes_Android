@@ -18,7 +18,7 @@
         android:textStyle="bold" />
 
     <ImageButton
-        android:id="@+id/backBtn"
+        android:id="@+id/cartBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -29,8 +29,8 @@
 
     <TextView
         android:id="@+id/badge_cart_2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="22dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"

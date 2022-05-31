@@ -14,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android_tkpm.EditProfileActivity;
 import com.example.android_tkpm.FavoritesActivity;
 import com.example.android_tkpm.MainActivity;
 import com.example.android_tkpm.Notifications.PushNotificationService;
@@ -40,6 +42,7 @@ import retrofit2.Response;
 
 public class UserFragment extends Fragment {
 
+    private static final int RESULT_OK = -1;
     private AuthService authService = ApiUtils.getUserService();
 
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -47,6 +50,7 @@ public class UserFragment extends Fragment {
     private RelativeLayout containerProfile, containerAuth, history_container, favorite_container;
     private TextView nameUser, emailUser, logout;
     private AppCompatButton signinButton, signupButton;
+    private ImageButton editButton;
 
     public UserFragment() {}
 
@@ -108,6 +112,14 @@ public class UserFragment extends Fragment {
             }
         });
 
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), EditProfileActivity.class));
+                startActivityForResult(new Intent(getActivity(), EditProfileActivity.class), 1);
+            }
+        });
+
         return view;
     }
 
@@ -123,6 +135,7 @@ public class UserFragment extends Fragment {
         signupButton = (AppCompatButton) view.findViewById(R.id.signup_button);
         history_container = (RelativeLayout) view.findViewById(R.id.history_container);
         favorite_container = (RelativeLayout) view.findViewById(R.id.favorite_container);
+        editButton = (ImageButton) view.findViewById(R.id.edit_profile);
     }
 
     private void getProfile() {
@@ -135,10 +148,10 @@ public class UserFragment extends Fragment {
 
                     loadingProfile.setVisibility(View.GONE);
 
-                    User user = response.body();
-                    if(user != null) {
-                        nameUser.setText(user.getFullName());
-                        emailUser.setText(user.getEmail());
+                    User.setUser(response.body());
+                    if(User.getUser() != null) {
+                        nameUser.setText(User.getUser().getFullName());
+                        emailUser.setText(User.getUser().getEmail());
                         containerProfile.setVisibility(View.VISIBLE);
                         containerAuth.setVisibility(View.GONE);
                     }
@@ -210,6 +223,8 @@ public class UserFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        checkToken();
+        if(resultCode == RESULT_OK) {
+            checkToken();
+        }
     }
 }

@@ -19,10 +19,14 @@ import com.example.android_tkpm.api.AuthService;
 import com.example.android_tkpm.models.SignIn;
 import com.example.android_tkpm.models.User;
 import com.example.android_tkpm.utils.TokenManager;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import okhttp3.Headers;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,6 +36,7 @@ public class SignInActivity extends AppCompatActivity {
     private Button backButton, signInBtn;
     private EditText email, password;
     private ProgressBar loadingSignIn;
+    private TextView registerButton;
 
     private AuthService authService = ApiUtils.getUserService();
 
@@ -52,7 +57,22 @@ public class SignInActivity extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSignIn();
+                if(
+                    email.getText().toString().trim().equals("") ||
+                    password.getText().toString().trim().equals("")
+                ) {
+                    toastMsg("Please don't be empty");
+                }
+                else {
+                    onSignIn();
+                }
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
             }
         });
     }
@@ -63,37 +83,40 @@ public class SignInActivity extends AppCompatActivity {
         email = findViewById(R.id.emailEdt);
         password = findViewById(R.id.passwordEdt);
         loadingSignIn = findViewById(R.id.loadingSignIn);
+        registerButton = (TextView) findViewById(R.id.registerBtn);
     }
 
     private void onSignIn() {
         loadingSignIn.setVisibility(View.VISIBLE);
         SignIn signIn = new SignIn(email.getText().toString().trim(), password.getText().toString().trim(), PushNotificationService.getToken(getApplicationContext()));
-        authService.signIn(signIn).enqueue(new Callback<User>() {
+        authService.signIn(signIn).enqueue(new Callback<com.example.android_tkpm.models.Response>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<com.example.android_tkpm.models.Response> call, Response<com.example.android_tkpm.models.Response> response) {
                 loadingSignIn.setVisibility(View.INVISIBLE);
-
                 Headers headers = response.headers();
                 if (response.isSuccessful()) {
                     if(new TokenManager(SignInActivity.this).saveToken(headers.get("Authorization"))) {
                         setResult(RESULT_OK);
                         finish();
                     }
-
                 }
                 else if (response.code() == 401) {
                     toastMsg("Incorrect email or password!");
                 }
-//                User user = response.body();
-//
-//                if (user != null) {
-////                    Log.e("Response: ", user.isSuccess().toString);
-//                }
-
+                else if(response.code() == 403 ) {
+                    try {
+                        ResponseBody response1 = response.errorBody();
+                        Gson gson = new Gson();
+                        com.example.android_tkpm.models.Response responseError = gson.fromJson(response1.string(), com.example.android_tkpm.models.Response.class);
+                        toastMsg(responseError.getMessage());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<com.example.android_tkpm.models.Response> call, Throwable t) {
                 loadingSignIn.setVisibility(View.INVISIBLE);
                 toastMsg("Error");
             }

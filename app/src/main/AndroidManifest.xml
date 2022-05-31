@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Android_TKPM"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".FavoritesActivity"
@@ -40,8 +40,13 @@
             android:name=".ProductActivity"
             android:exported="false" />
         <activity
+            android:name=".SignUpActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
             android:name=".SignInActivity"
-            android:exported="false" /> <!-- go to top android:launchMode="singleTask" -->
+            android:exported="false"
+            android:launchMode="singleTask" /> <!-- android:launchMode="singleTask or singleInstance" -->
         <activity
             android:name=".MainActivity"
             android:excludeFromRecents="true"

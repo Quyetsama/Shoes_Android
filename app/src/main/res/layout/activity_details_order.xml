@@ -265,6 +265,6 @@
 
     </ScrollView>
 
-    <include layout="@layout/button_1" />
+<!--    <include layout="@layout/button_1" />-->
 
 </RelativeLayout>

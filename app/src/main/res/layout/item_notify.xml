@@ -49,10 +49,20 @@
 
             <TextView
                 android:id="@+id/body_notify"
+                android:layout_above="@+id/time_notify"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/title_notify"
                 android:text="Đơn hàng của bạn đã được giao.\nCảm ơn bạn đã mua hàng." />
+
+            <TextView
+                android:id="@+id/time_notify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="bottom|right"
+                android:text="29/05/2022" />
 
         </RelativeLayout>
 

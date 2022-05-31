@@ -12,11 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android_tkpm.CartActivity;
 import com.example.android_tkpm.MainActivity;
 import com.example.android_tkpm.OrderHistoryActivity;
 import com.example.android_tkpm.R;
@@ -48,7 +50,9 @@ public class NotifyFragment extends Fragment {
     private ListView lvNotify;
     private NotifyAdapter notifyAdapter;
     private List<Notify> notifyList = new ArrayList<>();
-    private TextView titleToolbar, badgeCart;
+    private TextView titleToolbar;
+    private ImageButton cartBtn;
+    public static TextView badgeCart;
     private ProgressBar loading;
 
     public NotifyFragment() {}
@@ -84,6 +88,13 @@ public class NotifyFragment extends Fragment {
             }
         });
 
+        cartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), CartActivity.class));
+            }
+        });
+
         return view;
     }
 
@@ -91,6 +102,7 @@ public class NotifyFragment extends Fragment {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout_notify);
         lvNotify = (ListView) view.findViewById(R.id.lvNotify);
         titleToolbar = (TextView) view.findViewById(R.id.title_toolbar);
+        cartBtn = (ImageButton) view.findViewById(R.id.cartBtn);
         badgeCart = (TextView) view.findViewById(R.id.badge_cart_2);
         loading = (ProgressBar) view.findViewById(R.id.loading_notify);
 

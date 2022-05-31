@@ -18,6 +18,7 @@ import com.example.android_tkpm.R;
 import com.example.android_tkpm.models.ItemCart;
 import com.example.android_tkpm.models.Notify;
 import com.example.android_tkpm.models.Product;
+import com.example.android_tkpm.utils.HandleTime;
 
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class NotifyAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        TextView title, body;
+        TextView title, body, createdAt;
     }
 
     @Override
@@ -63,6 +64,7 @@ public class NotifyAdapter extends BaseAdapter {
 
             viewHolder.title = convertView.findViewById(R.id.title_notify);
             viewHolder.body = convertView.findViewById(R.id.body_notify);
+            viewHolder.createdAt = convertView.findViewById(R.id.time_notify);
 
             convertView.setTag(viewHolder);
         }
@@ -74,6 +76,7 @@ public class NotifyAdapter extends BaseAdapter {
 
         viewHolder.title.setText(notify.getTitle());
         viewHolder.body.setText(notify.getBody());
+        viewHolder.createdAt.setText(HandleTime.convertMongoDate(notify.getCreatedAt()));
 
         return convertView;
     }
